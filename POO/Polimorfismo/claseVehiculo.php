@@ -1,22 +1,27 @@
 <?php
-require("clasePaqueadero.php");
+require_once("claseParqueadero.php");
 class Vehiculo extends Parqueadero{
     private $placa;
     private $marca;
     private $color;
 
 
-    function __construct(int $Piso, int $numLugar,string $placaCar,string $MarcaCar, string $ColorCar){
-        parent::__construct($piso,$numLugar);
-        $this->$placa=$placaCar;
-        $this->$marca=$MarcaCar;
-        $this->$color=$ColorCar;
+    function __construct(string $placaCar,string $MarcaCar, string $ColorCar){
+        parent::__construct();
+        $this->placa=$placaCar;
+        $this->marca=$MarcaCar;
+        $this->color=$ColorCar;
     }
 
-    public function getUbicacion(){
-        $ubicacion=[
-            "Vehiculo"=""
-        ]
+    public function getCarPlaca(){
+       return $this->placa;
     }
+    public function getColor(){
+        return $this->color;
+    }
+    public function getMarca(){
+        return $this->marca;
+    }
+    
 }
 ?>

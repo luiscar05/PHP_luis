@@ -12,64 +12,78 @@
         {
            
         }
-        public function Registro($idCliente)
+        public function Registro()
         {
-           
             try {
-                
                 $mettod=$_SERVER["REQUEST_METHOD"];
-                if ($mettod=="POST") {
-                    $code=200;
+               
+                /* $response=[];
+                $arrayCliente=[]; */
+                if ($mettod=="POST"){
+                    
                     $_POST = json_decode(file_get_contents('php://input'), true);
 
                     if (empty($_POST['identificacion'])) {
                         $response=array(
                             'status'=>FALSE,
                             "msg"=>"La identificacion es Requerida"
-                        ); 
+                        );
+                        $code=200;
+
                         JsonResponse($response,$code);
                         die();
-                    }
+                    };
+                    
                     if (!testString($_POST['nombres'])) {
                         $response=array(
                             'status'=>FALSE,
                             "msg"=>"Error en los nombres",
                         ); 
+                        $code=200;
                         JsonResponse($response,$code);
                         die();
                     }
+                   
                     if (!testString($_POST['apellidos'])) {
                         $response=array(
                             'status'=>FALSE,
                             "msg"=>"Error en los apellidos"
                         ); 
+                        $code=200;
                         JsonResponse($response,$code);
                         die();
                     }
+                    
                     if (testNumber($_POST['telefono'])) {
                         $response=array(
                             'status'=>FALSE,
                             "msg"=>"Error en el telefono"
                         ); 
+                        $code=200;
                         JsonResponse($response,$code);
                         die();
                     }
-                    if (testEmail($_POST['email'])) {
+                    
+                    if (!testEmail($_POST['email'])) {
                         $response=array(
                             'status'=>FALSE,
                             "msg"=>"Error en el email"
                         ); 
+                        $code=200;
                         JsonResponse($response,$code);
                         die();
                     }
+                   
                     if (empty($_POST['direccion'])) {
                         $response=array(
                             'status'=>FALSE,
                             "msg"=>"La direccion es requerida"
                         ); 
+                        $code=200;
                         JsonResponse($response,$code);
                         die();
                     }
+                    
                     $strIdentificacion=$_POST['identificacion'];
                     $strNombres=ucwords(strtolower($_POST['nombres']));
                     $strApellidos=ucwords(strtolower($_POST['apellidos']));
@@ -80,7 +94,7 @@
                     $strNomFiscal=!empty($_POST['nombrefiscal']) ? strClean($_POST['nombrefiscal']):"";
                     $strDirFiscal=!empty($_POST['direccionfiscal']) ? strClean($_POST['direccionfiscal']):"";
                     
-                    $_REQUEST=$this->model->setCliente(
+                    $request=$this->model->setCliente(
                         $strIdentificacion,
                         $strNombres,
                         $strApellidos,
@@ -95,9 +109,10 @@
                     if ($request > 0) {
                         $arrayCliente=array(
                             'identifiacion'=>$strIdentificacion,
-                            'nombre'=>$strNombres,
-                            "apellido"=>$strApellidos,
-                            'telfono'=>$intTelefono,
+                            'nombres'=>$strNombres,
+                            "apellidos"=>$strApellidos,
+                            'telefono'=>$intTelefono,
+                            "email"=>$strEmail,
                             'direccion'=>$strDireccion,
                             'nit'=>$strNit,
                             'nombrefiscal'=>$strNomFiscal,
@@ -115,16 +130,16 @@
                         );
                         
                     }  
-                    $code=200;
+                    $code=200; 
                 }else{
                     $response=array(
                         'status'=>FALSE,
                         "msg"=>"Error en la solicitud del metodo: $mettod  cambie su tipo de metodo a POST",
                     );
                     $code=400;
-                }
-                /* JsonResponse($response,$code); 
-                die();*/
+                } 
+                JsonResponse($response,$code); 
+                die();
             } catch (exception $th) {
                echo "error en el proceso ".$th->getMessage();
             }

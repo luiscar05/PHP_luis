@@ -77,13 +77,14 @@
             return false;
         }
     }
-    function testEmail(string $email){
-        $re='/ [a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,3})$/m';
-        if (preg_match($re,$email)) {
+    function testEmail(string $email) {
+        $re = '/^[a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,3})$/';
+        if (preg_match($re, $email)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
+    
 
 ?>

@@ -54,11 +54,13 @@
         return $string;
     }
     function JsonResponse(array $arryData,int $code){
-        header(header:"HTTP/1.1 $code");
-        header(header: "Content-Type: application/json");
-        echo json_encode($arryData);
+        if (is_array($arryData)) {
+            header(header:"HTTP/1.1 $code");
+            header(header: "Content-Type: application/json");
+            echo json_encode($arryData, true);
+        }
+        
     }
-
     function testString(string $date){
         $re='/[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/m';
         if (preg_match($re,$date)) {

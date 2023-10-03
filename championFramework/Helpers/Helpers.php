@@ -53,14 +53,27 @@
         $string = str_ireplace("==","",$string);
         return $string;
     }
-    function JsonResponse(array $arryData,int $code){
+    function JsonResponse(array $arryData, int $code){
         if (is_array($arryData)) {
-            header(header:"HTTP/1.1 $code");
-            header(header: "Content-Type: application/json");
+            header("HTTP/1.1 $code");
+            header("Content-Type: application/json");  
+    
             echo json_encode($arryData, true);
+    
+            // Salir después de enviar la respuesta JSON
+            exit;
+        } else {
+            // Manejo de errores si $arryData no es un array
+            header("HTTP/1.1 500 Internal Server Error");
+            header("Content-Type: application/json");
+    
+            echo json_encode(['error' => 'Datos no válidos'], true);
+    
+            // Salir después de enviar la respuesta JSON de error
+            exit;
         }
-        
     }
+    
     function testString(string $date){
         $re='/[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/m';
         if (preg_match($re,$date)) {

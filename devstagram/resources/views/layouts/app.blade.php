@@ -15,9 +15,9 @@
         <header class="p-5 border-b shadow bg-white">
             <h1 class="text-start  font-black">Devstagram</h1>
             
-            <nav class="flex gap-2 text-center">
-                <a href="">Login</a>
-                <a href="/Register">Crear cuenta</a>
+            <nav class="">
+                <a href="#">Login</a>
+                <a href="{{route('register')}}">Crear cuenta</a>
             </nav>
         </header>
         <main class="container mt-10 mx-auto">
@@ -26,6 +26,7 @@
             </h2>
             @yield('contenido')
         </main>
+        
         <footer>
             <h3 class="text-center font-black p-5 text-gray-500 font-bold uppercase">
                 Todos los derechos- reservados  {{date("Y")}}

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -10,12 +13,21 @@ class RegisterController extends Controller
         return view('auth.register');
     }
     public function store(Request $request){
+        $request->request->add(["username"=>str::slug($request->username)]);
         $this->validate($request,[
-            "nombre"=>"required|min:3|max:50|regex:/^[\pL\s\-]+$/u",
-            "UserName"=>"required|unique:usuarios",
-            "email"=>"required||unique:usuarios|email",
-            "pasword"=>"required|min:7",
-            "password-confirmation"=>"required|min:7|confirmed"
+            "name"=>"required|min:3|max:50|regex:/^[\pL\s\-]+$/u",
+            "username"=>"required|unique:users",
+            "email"=>"required||unique:users|email",
+            "password"=>"required|confirmed|min:3",   
         ]);
+
+        User::create([
+            'name'=>$request->name,
+            "username"=>str::slug($request->username),
+            'email'=>$request->email,
+            'password'=>Hash::make($request->password)
+        ]);
+
+        return redirect()->route("post.index");
     }
 }

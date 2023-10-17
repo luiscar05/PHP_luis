@@ -12,15 +12,15 @@
             @csrf
             <div class="mb-5">
                 <label for="nombre" class="mb-2 block uppcase text-gray-500 font-bold">Nombre</label>
-                <input type="text" name="nombre" id="" placeholder="Nombre" class="border p-3  w-full rounded-lg">
-                @error('nombre')
+                <input type="text" name="name" id="" placeholder="Nombre" class="border p-3  w-full rounded-lg">
+                @error('name')
                     <p class="bg-red-500 text-white rounded-lg my-2 text5m text-center">{{$message}}</p>
                 @enderror
             </div>
             <div class="mb-5">
-                <label for="UserName" class="mb-2 block uppcase text-gray-500 font-bold">User Name</label>
-                <input type="text" name="UserName" id="" placeholder="User Name" class="border p-3  w-full rounded-lg">
-                @error('UserName')
+                <label for="username" class="mb-2 block uppcase text-gray-500 font-bold">User Name</label>
+                <input type="text" name="username" id="username" placeholder="User Name" class="border p-3  w-full rounded-lg">
+                @error('username')
                     <p class="bg-red-500 text-white rounded-lg my-2 text5m text-center">{{$message}}</p>
                 @enderror
             </div>
@@ -32,16 +32,16 @@
                 @enderror
             </div>
             <div class="mb-5">
-                <label for="pasword" class="mb-2 block uppcase text-gray-500 font-bold">Password</label>
-                <input type="password" name="pasword" id="" placeholder="Pasword" class="border p-3  w-full rounded-lg">
-                @error('pasword')
+                <label for="password" class="mb-2 block uppcase text-gray-500 font-bold">Password</label>
+                <input type="password" name="password" id="password" placeholder="Pasword" class="border p-3  w-full rounded-lg">
+                @error('password')
                     <p class="bg-red-500 text-white rounded-lg my-2 text5m text-center">{{$message}}</p>
                 @enderror
             </div>
             <div class="mb-5">
-                <label for="password-confirmation" class="mb-2 block uppcase text-gray-500 font-bold">Repite Pasword</label>
-                <input type="password" name="password-confirmation" id="password-confirmation" placeholder="Repite Password" class="border p-3  w-full rounded-lg">
-                @error('password-confirmation')
+                <label for="password_confirmation" class="mb-2 block uppcase text-gray-500 font-bold">Repite Pasword</label>
+                <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Repite Password" class="border p-3  w-full rounded-lg">
+                @error('password_confirmation')
                     <p class="bg-red-500 text-white rounded-lg my-2 text5m text-center">{{$message}}</p>
                 @enderror
             </div>

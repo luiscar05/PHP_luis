@@ -12,14 +12,14 @@
         @vite('resources/css/app.css')
     </head>
     <body class="antialiased">
-        <header class="p-5 border-b shadow bg-white">
-            <h1 class="text-start  font-black">Devstagram</h1>
-            
-            <nav class="">
-                <a href="#">Login</a>
-                <a href="{{route('register')}}">Crear cuenta</a>
-            </nav>
-        </header>
+    <header class="flex items-center justify-between p-5 border-b shadow bg-white">
+    <h1 class="text-2xl  font-extrabold">Devstagram</h1>
+    <nav class="flex items-center space-x-4">
+        <a class="hover:border-b hover:shadow-sm" href="{{ route('login') }}">Login</a>
+        <a class="hover:border-b hover:shadow-sm" href="{{ route('register') }}">Crear cuenta</a>
+    </nav>
+</header>
+
         <main class="container mt-10 mx-auto">
             <h2 class="font-black text-center text-3xl mb-10">
                 @yield('titulo')
@@ -28,7 +28,7 @@
         </main>
         
         <footer>
-            <h3 class="text-center font-black p-5 text-gray-500 font-bold uppercase">
+            <h3 class="text-center  p-5 text-gray-500 font-bold uppercase">
                 Todos los derechos- reservados  {{date("Y")}}
 
             </h3>

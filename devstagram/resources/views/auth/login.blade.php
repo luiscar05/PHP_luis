@@ -11,8 +11,8 @@
         <form method="post"  action= "{{route ('login')}}" novalidate>
             @csrf
             @if(session('message'))
-    <p class="bg-red-500 text-white rounded-lg my-2 text-5xl text-center">{{ session('message') }}</p>
-@endif
+                 <p class="bg-red-500 text-white rounded-lg my-2 text-2xl text-center">{{ session('message') }}</p>
+            @endif
 
             <div class="mb-5">
                 <label for="email" class="mb-2 block uppcase text-gray-500 font-bold">E-mail</label>
@@ -27,8 +27,12 @@
                 @error('password')
                     <p class="bg-red-500 text-white rounded-lg my-2 text5m text-center">{{$message}}</p>
                 @enderror
+            </div class="mb-5">
+                <input type="checkbox" name="remember"><label for="" class="mb-2 block uppcase text-gray-500 font-bold">Mantener mi sesion abierta</label>
+            <div>
+
             </div>
-           <input type="submit" value="Crear Cuenta" class="bg-sky-500 hover:bg-sky-700 transition-color cursor-pointer uppercase font-bold w-full p-3  text-white  rounded-lg">
+           <input type="submit" value="Iniciar Sesion" class="bg-sky-500 hover:bg-sky-700 transition-color cursor-pointer uppercase font-bold w-full p-3  text-white  rounded-lg">
            </form>
           
     </div>

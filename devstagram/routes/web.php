@@ -24,6 +24,11 @@ Route::get('/', function () {
 
 Route::get('/crear-cuenta',[RegisterController::class,'crear'])->name('register');
 Route::post('/crear-cuenta',[RegisterController::class,'store']);
+
 Route::get("/muro",[PostController::class,'index'])->name('post.index');
+
 Route::get('/login',[\App\Http\Controllers\LoginController::class,'index'])->name('login');
 Route::post('/login',[\App\Http\Controllers\LoginController::class,'store']);
+
+
+Route::post('/logout',[\App\Http\Controllers\logoutController::class,'store'])->name('logout');

@@ -14,10 +14,30 @@
     <body class="antialiased">
     <header class="flex items-center justify-between p-5 border-b shadow bg-white">
     <h1 class="text-2xl  font-extrabold">Devstagram</h1>
-    <nav class="flex items-center space-x-4">
-        <a class="hover:border-b hover:shadow-sm" href="{{ route('login') }}">Login</a>
-        <a class="hover:border-b hover:shadow-sm" href="{{ route('register') }}">Crear cuenta</a>
-    </nav>
+
+    {{-- Comprobar si el usuario esta autenticado --}}
+
+    @auth
+        <nav class="flex items-center space-x-4"> 
+            <a href="#" class="hover:border-b hover:shadow-sm text-gray-600">
+                hola <span class="font-bold">{{auth()->user()->username}}</span>
+            </a>
+            <form action="{{route('logout')}}" method="post">
+                @csrf 
+                <button type="submit" class="hover:border-b hover:shadow-sm">
+                    Cerrar Sesion
+                </button>
+            </form>
+            {{-- <a href="{{ route('logout') }}" class="hover:border-b hover:shadow-sm">Cerrar Sesion</a> --}}
+        </nav>   
+    @endauth
+    @guest
+        <nav class="flex items-center space-x-4">
+            <a class="hover:border-b hover:shadow-sm" href="{{ route('login') }}">Login</a>
+            <a class="hover:border-b hover:shadow-sm" href="{{ route('register') }}">Crear cuenta</a>
+        </nav>
+    @endguest
+    
 </header>
 
         <main class="container mt-10 mx-auto">

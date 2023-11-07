@@ -12,7 +12,8 @@
 
     <div class="md:w-1/2 bg-white rouded-lg p-5 shadow-xl">
     @if(auth()->check() && auth()->user()->name)
-    <h2 class="text-center text-red-500 font-extralight ">{{ auth()->user()->name }}</h2>
+    
+    <h2 class="text-center text-red-500 font-extralight ">{{ auth()->user()->username }}</h2>
     @else
         Usuario no tiene un nombre definido.
     @endif

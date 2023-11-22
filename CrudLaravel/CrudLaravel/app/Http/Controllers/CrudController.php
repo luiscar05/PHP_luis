@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Barryvdh\DomPDF\Facade\Pdf;
 class CrudController extends Controller
 {
     public function index (){
@@ -52,5 +53,13 @@ class CrudController extends Controller
 
         // Redirige a la vista principal
         return redirect()->route("listarUsers");
+    }
+    public function pdf($id){
+        $usuario=User::find($id);
+
+        $pdf = Pdf::loadView('auth.pdf', compact('usuario'));
+
+        return $pdf->download('Usuario.pdf');
+        /* return  $pdf->stream('Usuario.pdf'); */
     }
 }

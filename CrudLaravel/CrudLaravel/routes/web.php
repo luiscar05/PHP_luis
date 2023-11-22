@@ -23,3 +23,4 @@ Route::get('/listar-Users',[CrudController::class,'listar'])->name('listarUsers'
 Route::get('/actualizar-User/{id}',[CrudController::class,'buscar'])->name('UpdateUsers');
 Route::put('/actualizar-User/{id}',[CrudController::class,'actuctualizar']);
 Route::delete('/eliminar-User/{id}', [CrudController::class, 'Eliminar'])->name('eliminar-User');
+Route::get('/usuario/pdf/{id}',[CrudController::class,'pdf']);

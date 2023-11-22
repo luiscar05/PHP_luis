@@ -11,7 +11,7 @@
                     <th scope="col" class="px-6 py-4">Nombre</th>
                     <th scope="col" class="px-6 py-4">telefono</th>
                     <th scope="col" class="px-6 py-4">email</th>
-                    <th scope="col" class="px-6 py-4" colspan="2">Opciones</th>
+                    <th scope="col" class="px-6 py-4" colspan="3">Opciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,7 +31,7 @@
                                             <img class="w-4" src="{{ asset('img/basura.svg') }}">
                                         </button>
                                     </form>
-
+                            <a href="/usuario/pdf/{{$item->id}}""><img  class='w-8 rounded-2xl mx-2' src="{{ asset('img/descargar-pdf.png') }}"></a>
 
                         </td>
 
